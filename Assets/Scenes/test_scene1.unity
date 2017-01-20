@@ -351,9 +351,10 @@ GameObject:
   - component: {fileID: 74793055}
   - component: {fileID: 74793054}
   - component: {fileID: 74793053}
+  - component: {fileID: 74793058}
   m_Layer: 0
   m_Name: CrowdMember (3)
-  m_TagString: Untagged
+  m_TagString: crowd
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -454,6 +455,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &74793058
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 74793052}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.4
 --- !u!1 &105599871
 GameObject:
   m_ObjectHideFlags: 0
@@ -466,9 +481,10 @@ GameObject:
   - component: {fileID: 105599874}
   - component: {fileID: 105599873}
   - component: {fileID: 105599872}
+  - component: {fileID: 105599877}
   m_Layer: 0
   m_Name: CrowdMember (7)
-  m_TagString: Untagged
+  m_TagString: crowd
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -569,6 +585,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &105599877
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 105599871}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.4
 --- !u!1 &130667549
 GameObject:
   m_ObjectHideFlags: 0
@@ -1124,9 +1154,10 @@ GameObject:
   - component: {fileID: 294716324}
   - component: {fileID: 294716325}
   - component: {fileID: 294716321}
+  - component: {fileID: 294716326}
   m_Layer: 0
   m_Name: CrowdMember
-  m_TagString: Untagged
+  m_TagString: crowd
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1227,6 +1258,20 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 5
+--- !u!58 &294716326
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 294716320}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.4
 --- !u!1 &312583122
 GameObject:
   m_ObjectHideFlags: 0
@@ -1363,9 +1408,10 @@ GameObject:
   - component: {fileID: 331963166}
   - component: {fileID: 331963165}
   - component: {fileID: 331963164}
+  - component: {fileID: 331963169}
   m_Layer: 0
   m_Name: CrowdMember (15)
-  m_TagString: Untagged
+  m_TagString: crowd
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1466,6 +1512,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 16
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &331963169
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 331963163}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.4
 --- !u!1 &340168428
 GameObject:
   m_ObjectHideFlags: 0
@@ -1850,9 +1910,10 @@ GameObject:
   - component: {fileID: 504213074}
   - component: {fileID: 504213073}
   - component: {fileID: 504213072}
+  - component: {fileID: 504213077}
   m_Layer: 0
   m_Name: CrowdMember (14)
-  m_TagString: Untagged
+  m_TagString: crowd
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1953,6 +2014,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &504213077
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 504213071}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.4
 --- !u!1 &510389727
 GameObject:
   m_ObjectHideFlags: 0
@@ -2626,9 +2701,10 @@ GameObject:
   - component: {fileID: 662189980}
   - component: {fileID: 662189979}
   - component: {fileID: 662189978}
+  - component: {fileID: 662189983}
   m_Layer: 0
   m_Name: CrowdMember (6)
-  m_TagString: Untagged
+  m_TagString: crowd
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2729,6 +2805,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &662189983
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 662189977}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.4
 --- !u!1 &704889418
 GameObject:
   m_ObjectHideFlags: 0
@@ -3361,9 +3451,10 @@ GameObject:
   - component: {fileID: 883940858}
   - component: {fileID: 883940857}
   - component: {fileID: 883940856}
+  - component: {fileID: 883940861}
   m_Layer: 0
   m_Name: CrowdMember (12)
-  m_TagString: Untagged
+  m_TagString: crowd
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3464,6 +3555,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 13
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &883940861
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 883940855}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.4
 --- !u!1 &897518178
 GameObject:
   m_ObjectHideFlags: 0
@@ -3848,9 +3953,10 @@ GameObject:
   - component: {fileID: 949220642}
   - component: {fileID: 949220641}
   - component: {fileID: 949220643}
+  - component: {fileID: 949220646}
   m_Layer: 0
   m_Name: CrowdMember (1)
-  m_TagString: Untagged
+  m_TagString: crowd
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3951,6 +4057,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &949220646
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 949220640}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.4
 --- !u!1 &1024560950 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1807380758309742, guid: d9687b98e20e042bcbef2daf5b3402ed,
@@ -3972,6 +4092,7 @@ MonoBehaviour:
   m_acc: 2.5
   m_jumpSpeed: 5
   m_rotation: 0
+  m_jumped: 0
 --- !u!1 &1063913089
 GameObject:
   m_ObjectHideFlags: 0
@@ -4114,9 +4235,10 @@ GameObject:
   - component: {fileID: 1214559953}
   - component: {fileID: 1214559952}
   - component: {fileID: 1214559951}
+  - component: {fileID: 1214559956}
   m_Layer: 0
   m_Name: CrowdMember (5)
-  m_TagString: Untagged
+  m_TagString: crowd
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4217,6 +4339,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &1214559956
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1214559950}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.4
 --- !u!1001 &1248767505
 Prefab:
   m_ObjectHideFlags: 0
@@ -4259,6 +4395,10 @@ Prefab:
     - target: {fileID: 1807380758309742, guid: d9687b98e20e042bcbef2daf5b3402ed, type: 2}
       propertyPath: m_Name
       value: Player1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1807380758309742, guid: d9687b98e20e042bcbef2daf5b3402ed, type: 2}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: d9687b98e20e042bcbef2daf5b3402ed, type: 2}
@@ -4472,9 +4612,10 @@ GameObject:
   - component: {fileID: 1484337290}
   - component: {fileID: 1484337289}
   - component: {fileID: 1484337288}
+  - component: {fileID: 1484337293}
   m_Layer: 0
   m_Name: CrowdMember (4)
-  m_TagString: Untagged
+  m_TagString: crowd
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4575,6 +4716,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &1484337293
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1484337287}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.4
 --- !u!1 &1522810749
 GameObject:
   m_ObjectHideFlags: 0
@@ -4957,9 +5112,10 @@ GameObject:
   - component: {fileID: 1625444208}
   - component: {fileID: 1625444207}
   - component: {fileID: 1625444206}
+  - component: {fileID: 1625444211}
   m_Layer: 0
   m_Name: CrowdMember (13)
-  m_TagString: Untagged
+  m_TagString: crowd
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5060,6 +5216,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 14
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &1625444211
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1625444205}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.4
 --- !u!1 &1649896372
 GameObject:
   m_ObjectHideFlags: 0
@@ -5072,9 +5242,10 @@ GameObject:
   - component: {fileID: 1649896375}
   - component: {fileID: 1649896374}
   - component: {fileID: 1649896373}
+  - component: {fileID: 1649896378}
   m_Layer: 0
   m_Name: CrowdMember (2)
-  m_TagString: Untagged
+  m_TagString: crowd
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5175,6 +5346,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &1649896378
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1649896372}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.4
 --- !u!1 &1745428606
 GameObject:
   m_ObjectHideFlags: 0
@@ -5311,9 +5496,10 @@ GameObject:
   - component: {fileID: 1843874301}
   - component: {fileID: 1843874300}
   - component: {fileID: 1843874299}
+  - component: {fileID: 1843874304}
   m_Layer: 0
   m_Name: CrowdMember (11)
-  m_TagString: Untagged
+  m_TagString: crowd
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5414,6 +5600,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!58 &1843874304
+CircleCollider2D:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1843874298}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 0.4
 --- !u!1 &1850230219
 GameObject:
   m_ObjectHideFlags: 0

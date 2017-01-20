@@ -9,9 +9,11 @@ public class PlayerController : MonoBehaviour {
 	[SerializeField] float m_acc;
 	[SerializeField] float m_jumpSpeed;
 	[SerializeField] float m_rotation;
+	[SerializeField] bool m_jumped;
 
 	void Start () {
 		m_rb2d = GetComponent<Rigidbody2D> ();
+		m_jumped = false;
 	}
 	
 	// Update is called once per frame
@@ -39,8 +41,16 @@ public class PlayerController : MonoBehaviour {
 
 		m_rb2d.velocity = new Vector2 (m_movSpeed, m_rb2d.velocity.y);
 
-
-		if (Input.GetKeyDown (KeyCode.Space))
-			m_rb2d.velocity = new Vector2 (m_rb2d.velocity.x, 3.0f);
+		if (Input.GetKeyDown (KeyCode.Space) && !m_jumped) {
+			m_rb2d.velocity = new Vector2 (m_rb2d.velocity.x, m_jumpSpeed);
+			m_jumped = false;
+		}
 	}
+
+	void OnTriggerEnter2D (Collider2D col)
+	{
+		if (col.tag == "crowd")
+			m_jumped = false;
+	}
+
 }
