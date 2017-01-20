@@ -43,7 +43,7 @@ public class PlayerController : MonoBehaviour {
 
 		if (Input.GetKeyDown (KeyCode.Space) && !m_jumped) {
 			m_rb2d.velocity = new Vector2 (m_rb2d.velocity.x, m_jumpSpeed);
-			m_jumped = false;
+			m_jumped = true;
 		}
 	}
 
