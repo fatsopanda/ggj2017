@@ -97,7 +97,7 @@ GameObject:
   - component: {fileID: 233952246912756138}
   m_Layer: 0
   m_Name: player 2 right fist
-  m_TagString: Untagged
+  m_TagString: player2_hand
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -214,7 +214,7 @@ GameObject:
   - component: {fileID: 233015462518335536}
   m_Layer: 0
   m_Name: player 2 left fist
-  m_TagString: Untagged
+  m_TagString: player2_hand
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1171,8 +1171,8 @@ MonoBehaviour:
   m_gameManager: {fileID: 0}
   m_movSpeed: 0
   m_acc: 2.5
-  m_jumpSpeed: 10
-  m_rotation: 3
+  m_jumpSpeed: 15
+  m_rotation: 30
   m_jumped: 0
   m_grounded: 0
   m_playerNumber: 2
