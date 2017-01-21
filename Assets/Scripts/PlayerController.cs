@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour {
 
 	[SerializeField] Rigidbody2D m_rb2d;
+	[SerializeField] GameManager m_gameManager;
 	[SerializeField] float m_movSpeed;
 	[SerializeField] float m_acc;
 	[SerializeField] float m_jumpSpeed;
@@ -12,17 +13,15 @@ public class PlayerController : MonoBehaviour {
 	[SerializeField] bool m_jumped;
 	[SerializeField] int m_playerNumber;
 
-	public int m_hp;
-
 	void Start () {
 		m_rb2d = GetComponent<Rigidbody2D> ();
+		m_gameManager = GameObject.Find ("GameManager").GetComponent<GameManager> ();
 		m_jumped = false;
-		m_hp = 3;
 	}
 
 	void Update () {
 
-		if (m_playerNumber == 1) {
+		if (m_playerNumber == 1 && !m_gameManager.m_gameOver) {
 			m_movSpeed = Input.GetAxisRaw ("Player1_Horizontal") * m_acc;
 
 			if (Input.GetAxisRaw ("Player1_Horizontal") < 0) {
@@ -51,7 +50,7 @@ public class PlayerController : MonoBehaviour {
 			}
 		}
 
-		if (m_playerNumber == 2) {
+		if (m_playerNumber == 2 && !m_gameManager.m_gameOver) {
 			m_movSpeed = Input.GetAxisRaw ("Player2_Horizontal") * m_acc;
 
 			if (Input.GetAxisRaw ("Player2_Horizontal") < 0) {
@@ -89,4 +88,6 @@ public class PlayerController : MonoBehaviour {
 		if (col.tag == "crowd")
 			m_jumped = false;
 	}
+
+
 }

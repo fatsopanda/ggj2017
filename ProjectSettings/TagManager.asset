@@ -6,6 +6,10 @@ TagManager:
   tags:
   - crowd
   - ground
+  - player1_head
+  - player2_head
+  - player1_hand
+  - player2_hand
   layers:
   - Default
   - TransparentFX
