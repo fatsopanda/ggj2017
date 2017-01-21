@@ -10,40 +10,78 @@ public class PlayerController : MonoBehaviour {
 	[SerializeField] float m_jumpSpeed;
 	[SerializeField] float m_rotation;
 	[SerializeField] bool m_jumped;
+	[SerializeField] int m_playerNumber;
+
+	public int m_hp;
 
 	void Start () {
 		m_rb2d = GetComponent<Rigidbody2D> ();
 		m_jumped = false;
+		m_hp = 3;
 	}
-	
+
 	void Update () {
-		m_movSpeed = Input.GetAxisRaw ("Horizontal") * m_acc;
 
-		if (Input.GetAxisRaw ("Horizontal") < 0) {
-			m_rotation -= 0.25f;
-			gameObject.transform.Rotate(0.0f, 0.0f, m_rotation);
+		if (m_playerNumber == 1) {
+			m_movSpeed = Input.GetAxisRaw ("Player1_Horizontal") * m_acc;
+
+			if (Input.GetAxisRaw ("Player1_Horizontal") < 0) {
+				m_rotation -= 0.25f;
+				gameObject.transform.Rotate (0.0f, 0.0f, m_rotation);
+			}
+
+			if (Input.GetAxisRaw ("Player1_Horizontal") > 0) {
+				m_rotation += 0.25f;
+				gameObject.transform.Rotate (0.0f, 0.0f, m_rotation);
+			}
+
+			if (Input.GetAxisRaw ("Player1_Horizontal") == 0)
+				m_rotation = 0.0f;
+
+			if (m_rotation >= 1.0f)
+				m_rotation = 1.0f;
+
+			if (m_rotation <= -1.0f)
+				m_rotation = -1.0f;
+
+
+			if (Input.GetKeyDown (KeyCode.UpArrow) && !m_jumped) {
+				m_rb2d.velocity = new Vector2 (m_rb2d.velocity.x, m_jumpSpeed);
+				m_jumped = true;
+			}
 		}
 
-		if (Input.GetAxisRaw ("Horizontal") > 0) {
-			m_rotation += 0.25f;
-			gameObject.transform.Rotate(0.0f, 0.0f, m_rotation);
+		if (m_playerNumber == 2) {
+			m_movSpeed = Input.GetAxisRaw ("Player2_Horizontal") * m_acc;
+
+			if (Input.GetAxisRaw ("Player2_Horizontal") < 0) {
+				m_rotation -= 0.25f;
+				gameObject.transform.Rotate (0.0f, 0.0f, m_rotation);
+			}
+
+			if (Input.GetAxisRaw ("Player2_Horizontal") > 0) {
+				m_rotation += 0.25f;
+				gameObject.transform.Rotate (0.0f, 0.0f, m_rotation);
+			}
+
+			if (Input.GetAxisRaw ("Player2_Horizontal") == 0)
+				m_rotation = 0.0f;
+
+			if (m_rotation >= 1.0f)
+				m_rotation = 1.0f;
+
+			if (m_rotation <= -1.0f)
+				m_rotation = -1.0f;
+
+
+			if (Input.GetKeyDown (KeyCode.W) && !m_jumped) {
+				m_rb2d.velocity = new Vector2 (m_rb2d.velocity.x, m_jumpSpeed);
+				m_jumped = true;
+			}
 		}
-
-		if (Input.GetAxisRaw ("Horizontal") == 0)
-			m_rotation = 0.0f;
-
-		if (m_rotation >= 1.0f)
-			m_rotation = 1.0f;
-
-		if (m_rotation <= -1.0f)
-			m_rotation = -1.0f;
 
 		m_rb2d.velocity = new Vector2 (m_movSpeed, m_rb2d.velocity.y);
 
-		if (Input.GetKeyDown (KeyCode.Space) && !m_jumped) {
-			m_rb2d.velocity = new Vector2 (m_rb2d.velocity.x, m_jumpSpeed);
-			m_jumped = true;
-		}
 	}
 
 	void OnTriggerEnter2D (Collider2D col)
