@@ -15,10 +15,10 @@ TagManager:
   - UI
   - 
   - 
-  - 
-  - 
-  - 
-  - 
+  - crowdColliders1
+  - crowdColliders2
+  - ground
+  - ball
   - 
   - 
   - 
