@@ -10,8 +10,8 @@ public class BallMovementScript : MonoBehaviour {
 	[SerializeField] bool m_movingLeft;
 
 	void Start () {
-		m_rightLimit = 20.0f;
-		m_leftLimit = -20.0f;
+		m_rightLimit = 25.0f;
+		m_leftLimit = -25.0f;
 		if (gameObject.name == "BigAssBall1")
 			m_movingLeft = true;
 		else
