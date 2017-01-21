@@ -14,10 +14,12 @@ public class HeadCollision : MonoBehaviour {
 
 	void Start() {
 		m_gameManager = GameObject.Find ("GameManager").GetComponent<GameManager> ();
+
 	}
 
 	void OnTriggerEnter2D(Collider2D col) {
 		// If we're player 1 and get hit by player2's hand
+		StartCoroutine("FlashSprite");
 		if (m_playerNumber == 1 && col.tag == "player2_hand") {
 			if (!m_gameManager.m_player1Hit) {
 				m_gameManager.PlayerHit (1);
