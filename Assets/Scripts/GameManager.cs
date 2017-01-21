@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour {
 	public bool m_player1Hit;
 	public bool m_player2Hit;
 	public bool m_gameOver;
+	public bool m_moshPitMode;
 	public int m_player1Hp;
 	public int m_player2Hp;
 
@@ -24,6 +25,7 @@ public class GameManager : MonoBehaviour {
 		m_player1Hp = 3;
 		m_player2Hp = 3;
 		m_gameOver = false;
+		m_moshPitMode = false;
 	}
 	
 	void Update () {
