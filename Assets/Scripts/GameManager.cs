@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
@@ -28,7 +29,7 @@ public class GameManager : MonoBehaviour {
 	void Update () {
 		if (m_player1Hp <= 0)
 			StartCoroutine (EndGame (2));
-		if (m_player1Hp <= 0)
+		if (m_player2Hp <= 0)
 			StartCoroutine (EndGame (1));
 	}
 
@@ -63,6 +64,9 @@ public class GameManager : MonoBehaviour {
 			Debug.Log ("Player 2 won!");
 		}
 
-		yield return new WaitForSeconds (5.0f);
+		yield return new WaitForSeconds (1.0f);
+		if (Input.GetKey (KeyCode.R))
+			SceneManager.LoadScene (0);
+			
 	}
 }

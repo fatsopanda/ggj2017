@@ -11,7 +11,9 @@ public class PlayerController : MonoBehaviour {
 	[SerializeField] float m_jumpSpeed;
 	[SerializeField] float m_rotation;
 	[SerializeField] bool m_jumped;
+	[SerializeField] bool m_grounded;
 	[SerializeField] int m_playerNumber;
+
 
 	void Start () {
 		m_rb2d = GetComponent<Rigidbody2D> ();
@@ -73,21 +75,26 @@ public class PlayerController : MonoBehaviour {
 				m_rotation = -1.0f;
 
 
-			if (Input.GetKeyDown (KeyCode.W) && !m_jumped) {
+			if (Input.GetKey (KeyCode.W) && !m_jumped) {
 				m_rb2d.velocity = new Vector2 (m_rb2d.velocity.x, m_jumpSpeed);
 				m_jumped = true;
+				m_grounded = false;
 			}
 		}
 
 		m_rb2d.velocity = new Vector2 (m_movSpeed, m_rb2d.velocity.y);
-
 	}
 
 	void OnTriggerEnter2D (Collider2D col)
 	{
-		if (col.tag == "crowd")
+		if (col.tag == "crowd") {
+			m_grounded = true;
 			m_jumped = false;
+		}
 	}
-
-
+	void OnTriggerExit2D (Collider2D col)
+	{
+		if (col.tag == "crowd")
+			m_grounded = false;
+	}
 }

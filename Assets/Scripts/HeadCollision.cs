@@ -26,12 +26,10 @@ public class HeadCollision : MonoBehaviour {
 		}
 		
 		// If we're player 2 and get hit by player1's hand
-		if (m_playerNumber == 2 && col.tag == "player2_hand") {
-			if (col.tag == "player1_hand") {
-				if (!m_gameManager.m_player2Hit) {
-					m_gameManager.PlayerHit (2);
-					Debug.Log ("Player2 got hit!");
-				}
+		if (m_playerNumber == 2 && col.tag == "player1_hand") {
+			if (!m_gameManager.m_player2Hit) {
+				m_gameManager.PlayerHit (2);
+				Debug.Log ("Player2 got hit!");
 			}
 		}
 	}
