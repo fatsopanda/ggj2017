@@ -18,9 +18,7 @@ public class BallMovementScript : MonoBehaviour {
 			m_movingLeft = false;
 	}
 	
-	// Update is called once per frame
 	void Update () {
-		//if (gameObject.transform.position.x >= m_rightLimit)
 		if (m_movingLeft)
 			gameObject.transform.position = new Vector3 (Mathf.Lerp(gameObject.transform.position.x, m_leftLimit, 0.75f * Time.deltaTime), transform.position.y, 0.0f);
 
@@ -32,9 +30,5 @@ public class BallMovementScript : MonoBehaviour {
 
 		if (gameObject.transform.position.x >= m_rightLimit - 2.0f)
 			m_movingLeft = true;
-
-		/*if (gameObject.transform.position.x <= m_leftLimit)
-			gameObject.transform.position = new Vector3 (gameObject.transform.position.x + m_speed, transform.position.y, 0.0f);
-		*/
 	}
 }

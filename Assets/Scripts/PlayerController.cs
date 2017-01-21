@@ -16,7 +16,6 @@ public class PlayerController : MonoBehaviour {
 		m_jumped = false;
 	}
 	
-	// Update is called once per frame
 	void Update () {
 		m_movSpeed = Input.GetAxisRaw ("Horizontal") * m_acc;
 
@@ -52,5 +51,4 @@ public class PlayerController : MonoBehaviour {
 		if (col.tag == "crowd")
 			m_jumped = false;
 	}
-
 }
