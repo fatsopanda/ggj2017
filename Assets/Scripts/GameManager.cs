@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour {
 	[SerializeField] GameObject m_player2;
 	[SerializeField] PlayerController m_p1Controller;
 	[SerializeField] PlayerController m_p2Controller;
+	[SerializeField] CameraController m_cameraController;
 
 	public bool m_player1Hit;
 	public bool m_player2Hit;
@@ -22,6 +23,7 @@ public class GameManager : MonoBehaviour {
 		m_player2 = GameObject.Find ("Player2");
 		m_p1Controller = m_player1.GetComponent<PlayerController> ();
 		m_p2Controller = m_player2.GetComponent<PlayerController> ();
+		m_cameraController = Camera.main.GetComponent<CameraController> ();
 		m_player1Hp = 3;
 		m_player2Hp = 3;
 		m_gameOver = false;
@@ -48,6 +50,7 @@ public class GameManager : MonoBehaviour {
 	}
 
 	IEnumerator PlayerHitEvent(int player) {
+		m_cameraController.ScreenShake (2);
 		yield return new WaitForSeconds (1.0f);
 		if (player == 1)
 			m_player1Hit = false;
