@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: a674841a2926e48d3a8cff6f88e850aa
-timeCreated: 1485027851
+timeCreated: 1485029193
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -14,7 +14,7 @@ TextureImporter:
     21300014: player4 head
     21300016: player4 shoulder
     21300018: player4 upper arm part
-    21300020: lower arm part
+    21300020: player4 lower arm part
     21300022: player4 fist
     21300024: player4 thigh
     21300026: player4 knee
@@ -240,7 +240,7 @@ TextureImporter:
       outline: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: lower arm part
+      name: player4 lower arm part
       rect:
         serializedVersion: 2
         x: 704
