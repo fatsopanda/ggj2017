@@ -56,7 +56,9 @@ MonoBehaviour:
   m_player2: {fileID: 0}
   m_p1Controller: {fileID: 0}
   m_p2Controller: {fileID: 0}
-  m_playerHit: 0
+  m_player1Hit: 0
+  m_player2Hit: 0
+  m_gameOver: 0
   m_player1Hp: 0
   m_player2Hp: 0
 --- !u!114 &114593986746250020
