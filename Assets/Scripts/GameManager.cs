@@ -25,6 +25,9 @@ public class GameManager : MonoBehaviour {
 	[SerializeField] GameObject m_gamePanel;
 	[SerializeField] Image[] m_P1HP;
 	[SerializeField] Image[] m_P2HP;
+	[SerializeField] GameObject m_endPanel;
+	[SerializeField] Image m_player1Win;
+	[SerializeField] Image m_player2Win;
 
 	[SerializeField] Vector3 m_p1StartPos;
 	[SerializeField] Vector3 m_p2StartPos;
@@ -76,6 +79,10 @@ public class GameManager : MonoBehaviour {
 		m_P2HP [1] = GameObject.Find ("P2HP2").GetComponent<Image>();
 		m_P2HP [2] = GameObject.Find ("P2HP3").GetComponent<Image>();
 
+		m_endPanel = GameObject.Find ("EndPanel");
+		m_player1Win = GameObject.Find ("Player1Wins").GetComponent<Image> ();
+		m_player2Win = GameObject.Find ("Player2Wins").GetComponent<Image> ();
+
 		m_p1StartPos = m_player1.transform.position;
 		m_p2StartPos = m_player2.transform.position;
 
@@ -85,20 +92,26 @@ public class GameManager : MonoBehaviour {
 		m_bigAssBall2.SetActive (false);
 		m_player1.SetActive (false);
 		m_player2.SetActive (false);
+		m_endPanel.SetActive (false);
 	}
 	
 	void Update () {
 		if (m_player1Hp <= 0) {
-			m_audioManager.Play (1);
-			StartCoroutine (EndGame (2));
+			GameOver(2);
 		}
 		if (m_player2Hp <= 0) {
-			m_audioManager.Play (1);
-			StartCoroutine (EndGame (1));
+			GameOver (1);
 		}
 	}
 
+	public void GameOver(int player) {
+		m_gameOver = true;
+		m_audioManager.Play (1);
+		StartCoroutine (EndGame (player));
+	}
+
 	public void StartGame() {
+		m_endPanel.SetActive (false);
 		m_player1Hp = 3;
 		m_player2Hp = 3;
 
@@ -200,15 +213,17 @@ public class GameManager : MonoBehaviour {
 	}
 
 	IEnumerator EndGame(int player) {
-		m_gameOver = true;
 		m_bigAssBall1.SetActive (false);
 		m_bigAssBall2.SetActive (false);
+
+		m_endPanel.SetActive (true);
 		if (player == 1) {
-			Debug.Log ("Player 1 won!");
-			
+			m_player2Win.enabled = false;
+			m_player1Win.enabled = true;
 		}
 		if (player == 2) {
-			Debug.Log ("Player 2 won!");
+			m_player1Win.enabled = false;
+			m_player2Win.enabled = true;
 		}
 
 		if (Input.GetKey (KeyCode.Space))
