@@ -26,6 +26,9 @@ public class GameManager : MonoBehaviour {
 	[SerializeField] Image[] m_P1HP;
 	[SerializeField] Image[] m_P2HP;
 
+	[SerializeField] Vector3 m_p1StartPos;
+	[SerializeField] Vector3 m_p2StartPos;
+
 	public bool m_player1Hit;
 	public bool m_player2Hit;
 	public bool m_gameOver;
@@ -70,6 +73,9 @@ public class GameManager : MonoBehaviour {
 		m_P2HP [1] = GameObject.Find ("P2HP2").GetComponent<Image>();
 		m_P2HP [2] = GameObject.Find ("P2HP3").GetComponent<Image>();
 
+		m_p1StartPos = m_player1.transform.position;
+		m_p2StartPos = m_player2.transform.position;
+
 		// The beginning situation
 		m_gamePanel.SetActive (false);
 		m_bigAssBall1.SetActive (false);
@@ -88,6 +94,8 @@ public class GameManager : MonoBehaviour {
 	public void StartGame() {
 		m_player1Hp = 3;
 		m_player2Hp = 3;
+
+		// Enable game play stuff
 		m_gamePanel.SetActive (true);
 		for (int i = 0; i < m_P1HP.Length; i++) {
 			m_P1HP [i].enabled = true;
@@ -95,8 +103,17 @@ public class GameManager : MonoBehaviour {
 		}
 		m_bigAssBall1.SetActive (true);
 		m_bigAssBall2.SetActive (true);
-		m_player1.SetActive (true);
-		m_player2.SetActive (true);
+
+		if (!m_player1.activeInHierarchy)
+			m_player1.SetActive (true);
+		if(!m_player2.activeInHierarchy)
+			m_player2.SetActive (true);
+
+		if (m_gameOver)
+			m_gameOver = false;
+
+		m_player1.transform.position = m_p1StartPos;
+		m_player2.transform.position = m_p2StartPos;
 	}
 
 	public void PlayerHit(int player) {
@@ -174,7 +191,8 @@ public class GameManager : MonoBehaviour {
 
 	IEnumerator EndGame(int player) {
 		m_gameOver = true;
-
+		m_bigAssBall1.SetActive (false);
+		m_bigAssBall2.SetActive (false);
 		if (player == 1) {
 			Debug.Log ("Player 1 won!");
 			
@@ -184,9 +202,9 @@ public class GameManager : MonoBehaviour {
 		}
 
 		yield return new WaitForSeconds (1.0f);
+
 		if (Input.GetKey (KeyCode.R))
-			SceneManager.LoadScene (0);
-			
+			StartGame ();
 	}
 
 }
