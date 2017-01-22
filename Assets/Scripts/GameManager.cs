@@ -105,6 +105,8 @@ public class GameManager : MonoBehaviour {
 	}
 	
 	void Update () {
+		m_player1.transform.position = new Vector3 (m_p1StartPos.x, m_p1StartPos.y, m_p1StartPos.z);
+
 		if (m_player1Hp <= 0 && !m_gameOver) {
 			GameOver(2);
 		}
@@ -156,12 +158,10 @@ public class GameManager : MonoBehaviour {
 			if (!m_player2.activeInHierarchy)
 				m_player2.SetActive (true);
 
-
-			m_player1.transform.position = m_p1StartPos;
-			m_player2.transform.position = m_p2StartPos;
-
 			m_audioManager.Play (0);
 			m_gameOver = false;
+
+			m_player2.transform.position = m_p2StartPos;
 		}
 	}
 
