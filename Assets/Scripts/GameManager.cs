@@ -25,6 +25,7 @@ public class GameManager : MonoBehaviour {
 	[SerializeField] GameObject m_gamePanel;
 	[SerializeField] Image[] m_P1HP;
 	[SerializeField] Image[] m_P2HP;
+	[SerializeField] Image m_pauseImage;
 	[SerializeField] GameObject m_endPanel;
 	[SerializeField] Image m_player1Win;
 	[SerializeField] Image m_player2Win;
@@ -35,6 +36,7 @@ public class GameManager : MonoBehaviour {
 	[SerializeField] AudioManager m_audioManager;
 
 	[SerializeField] MenuButtons m_menuButtons;
+	[SerializeField] bool m_paused;
 
 	public bool m_player1Hit;
 	public bool m_player2Hit;
@@ -63,6 +65,7 @@ public class GameManager : MonoBehaviour {
 		m_player2Hp = 3;
 		m_gameOver = true;
 		m_moshPitMode = false;
+		m_paused = false;
 
 		// GameObjects
 		m_bigAssBall1 = GameObject.Find("BigAssBall1");
@@ -80,6 +83,7 @@ public class GameManager : MonoBehaviour {
 		m_P2HP [0] = GameObject.Find ("P2HP1").GetComponent<Image>();
 		m_P2HP [1] = GameObject.Find ("P2HP2").GetComponent<Image>();
 		m_P2HP [2] = GameObject.Find ("P2HP3").GetComponent<Image>();
+		m_pauseImage = GameObject.Find ("PauseImage").GetComponent<Image> ();
 
 		m_endPanel = GameObject.Find ("EndPanel");
 		m_player1Win = GameObject.Find ("Player1Wins").GetComponent<Image> ();
@@ -91,6 +95,7 @@ public class GameManager : MonoBehaviour {
 		m_p2StartPos = m_player2.transform.position;
 
 		// The beginning situation
+		m_pauseImage.enabled = false;
 		m_gamePanel.SetActive (false);
 		m_bigAssBall1.SetActive (false);
 		m_bigAssBall2.SetActive (false);
@@ -106,8 +111,23 @@ public class GameManager : MonoBehaviour {
 		if (m_player2Hp <= 0 && !m_gameOver) {
 			GameOver (1);
 		}
-		if (Input.GetKey (KeyCode.Space) && m_gameOver && !m_menuButtons.m_menuActive)
+		if (Input.GetKeyDown (KeyCode.Space) && m_gameOver && !m_menuButtons.m_menuActive)
 			StartGame ();
+
+		if (Input.GetKeyDown (KeyCode.Escape) && !m_gameOver && !m_menuButtons.m_menuActive)
+		{
+			if (Time.timeScale == 1) {
+				Time.timeScale = 0;
+				m_pauseImage.enabled = true;
+				m_paused = true;
+			}
+			else
+			{
+				m_pauseImage.enabled = false;
+				Time.timeScale = 1;
+				m_paused = false;
+			}
+		}
 	}
 
 	public void GameOver(int player) {
