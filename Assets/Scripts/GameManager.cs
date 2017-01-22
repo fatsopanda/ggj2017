@@ -20,8 +20,8 @@ public class GameManager : MonoBehaviour {
 
 	// UI stuff
 	[SerializeField] GameObject m_gamePanel;
-	[SerializeField] GameObject[] m_P1HP;
-	[SerializeField] GameObject[] m_P2HP;
+	[SerializeField] Image[] m_P1HP;
+	[SerializeField] Image[] m_P2HP;
 
 	public bool m_player1Hit;
 	public bool m_player2Hit;
@@ -52,13 +52,16 @@ public class GameManager : MonoBehaviour {
 
 		// UI
 		m_gamePanel = GameObject.Find ("GamePanel");
-		m_P1HP = new GameObject[m_player1Hp];
-		m_P2HP = new GameObject[m_player2Hp];
+		m_P1HP = new Image[m_player1Hp];
+		m_P2HP = new Image[m_player2Hp];
 
-		m_P1HP [0] = GameObject.Find ("P1HP1");
-		m_P1HP [1] = GameObject.Find ("P1HP2");
-		m_P1HP [2] = GameObject.Find ("P1HP3");
+		m_P1HP [0] = GameObject.Find ("P1HP1").GetComponent<Image>();
+		m_P1HP [1] = GameObject.Find ("P1HP2").GetComponent<Image>();
+		m_P1HP [2] = GameObject.Find ("P1HP3").GetComponent<Image>();
 
+		m_P2HP [0] = GameObject.Find ("P2HP1").GetComponent<Image>();
+		m_P2HP [1] = GameObject.Find ("P2HP2").GetComponent<Image>();
+		m_P2HP [2] = GameObject.Find ("P2HP3").GetComponent<Image>();
 	}
 	
 	void Update () {
@@ -69,15 +72,36 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void PlayerHit(int player) {
-		if (player == 1) {
-			m_player1Hit = true;
-			m_player1Hp--;
+		if (!m_gameOver) {
+			if (player == 1) {
+				m_player1Hit = true;
+				m_player1Hp--;
+			}
+			if (player == 2) {
+				m_player2Hit = true;
+				m_player2Hp--;
+			}
+
+			if (m_player2Hp == 2)
+				m_P2HP[2].enabled = false;
+
+			if (m_player2Hp == 1)
+				m_P2HP[1].enabled = false;
+
+			if (m_player2Hp <= 0)
+				m_P2HP[0].enabled = false;
+
+			if (m_player1Hp == 2)
+				m_P1HP[2].enabled = false;
+
+			if (m_player1Hp == 1)
+				m_P1HP[1].enabled = false;
+
+			if (m_player1Hp <= 0)
+				m_P1HP[0].enabled = false;
+
+			StartCoroutine (PlayerHitEvent (player));
 		}
-		if (player == 2) {
-			m_player2Hit = true;
-			m_player2Hp--;
-		}
-		StartCoroutine (PlayerHitEvent(player));
 	}
 
 	IEnumerator FlashSprite(int player) {
@@ -93,7 +117,6 @@ public class GameManager : MonoBehaviour {
 			m_p1spriteRenderer.sprite = m_p1hitSprite;
 			yield return new WaitForSeconds (0.5f);
 			m_p1spriteRenderer.sprite = m_p1currentSprite;
-
 		}
 
 		if (player == 2) {
