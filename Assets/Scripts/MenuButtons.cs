@@ -50,6 +50,10 @@ public class MenuButtons : MonoBehaviour {
 		m_gameManager.StartGame ();
 	}
 
+	public void QuitButton() {
+		Application.Quit();
+	}
+
 	void Update () {
 		if (Input.GetKeyDown("escape") && (m_howto))
 			Back();
