@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
@@ -17,6 +18,11 @@ public class GameManager : MonoBehaviour {
 	[SerializeField] Sprite m_p2currentSprite;
 	[SerializeField] Sprite m_p2hitSprite;
 
+	// UI stuff
+	[SerializeField] GameObject m_gamePanel;
+	[SerializeField] GameObject[] m_P1HP;
+	[SerializeField] GameObject[] m_P2HP;
+
 	public bool m_player1Hit;
 	public bool m_player2Hit;
 	public bool m_gameOver;
@@ -25,19 +31,34 @@ public class GameManager : MonoBehaviour {
 	public int m_player2Hp;
 
 	void Start () {
+		// Players and camera objects
 		m_player1 = GameObject.Find ("Player1");
 		m_player2 = GameObject.Find ("Player2");
 		//m_p1Controller = m_player1.GetComponent<PlayerController> ();
 		//m_p2Controller = m_player2.GetComponent<PlayerController> ();
 		m_cameraController = Camera.main.GetComponent<CameraController> ();
+
+		// Flashing head sprite
 		m_p1spriteRenderer = GameObject.Find("player 1 head").GetComponent<SpriteRenderer> ();
 		m_p2spriteRenderer = GameObject.Find("player 2 head").GetComponent<SpriteRenderer> ();
 		m_p1currentSprite = m_p1spriteRenderer.sprite;
 		m_p2currentSprite = m_p2spriteRenderer.sprite;
+
+		// Some basic stuff
 		m_player1Hp = 3;
 		m_player2Hp = 3;
 		m_gameOver = false;
 		m_moshPitMode = false;
+
+		// UI
+		m_gamePanel = GameObject.Find ("GamePanel");
+		m_P1HP = new GameObject[m_player1Hp];
+		m_P2HP = new GameObject[m_player2Hp];
+
+		m_P1HP [0] = GameObject.Find ("P1HP1");
+		m_P1HP [1] = GameObject.Find ("P1HP2");
+		m_P1HP [2] = GameObject.Find ("P1HP3");
+
 	}
 	
 	void Update () {
