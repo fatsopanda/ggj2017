@@ -8,8 +8,8 @@ public class GameManager : MonoBehaviour {
 
 	[SerializeField] GameObject m_player1;
 	[SerializeField] GameObject m_player2;
-	//[SerializeField] PlayerController m_p1Controller;
-	//[SerializeField] PlayerController m_p2Controller;
+	[SerializeField] PlayerController m_p1Controller;
+	[SerializeField] PlayerController m_p2Controller;
 	[SerializeField] CameraController m_cameraController;
 	[SerializeField] SpriteRenderer m_p1spriteRenderer;
 	[SerializeField] Sprite m_p1currentSprite;
@@ -30,9 +30,6 @@ public class GameManager : MonoBehaviour {
 	[SerializeField] Image m_player1Win;
 	[SerializeField] Image m_player2Win;
 
-	[SerializeField] Vector3 m_p1StartPos;
-	[SerializeField] Vector3 m_p2StartPos;
-
 	[SerializeField] AudioManager m_audioManager;
 
 	[SerializeField] MenuButtons m_menuButtons;
@@ -49,8 +46,8 @@ public class GameManager : MonoBehaviour {
 		// Players and camera objects
 		m_player1 = GameObject.Find ("Player1");
 		m_player2 = GameObject.Find ("Player2");
-		//m_p1Controller = m_player1.GetComponent<PlayerController> ();
-		//m_p2Controller = m_player2.GetComponent<PlayerController> ();
+		m_p1Controller = GameObject.Find("player 1 torso").GetComponent<PlayerController> ();
+		m_p2Controller = GameObject.Find("player 2 torso").GetComponent<PlayerController> ();
 		m_cameraController = Camera.main.GetComponent<CameraController> ();
 		m_audioManager = GameObject.Find ("AudioManager").GetComponent<AudioManager> ();
 
@@ -91,9 +88,6 @@ public class GameManager : MonoBehaviour {
 
 		m_menuButtons = GameObject.Find ("MenuManager").GetComponent<MenuButtons> ();
 
-		m_p1StartPos = m_player1.transform.position;
-		m_p2StartPos = m_player2.transform.position;
-
 		// The beginning situation
 		m_pauseImage.enabled = false;
 		m_gamePanel.SetActive (false);
@@ -105,16 +99,17 @@ public class GameManager : MonoBehaviour {
 	}
 	
 	void Update () {
-		m_player1.transform.position = new Vector3 (m_p1StartPos.x, m_p1StartPos.y, m_p1StartPos.z);
-
 		if (m_player1Hp <= 0 && !m_gameOver) {
 			GameOver(2);
 		}
 		if (m_player2Hp <= 0 && !m_gameOver) {
 			GameOver (1);
 		}
-		if (Input.GetKeyDown (KeyCode.Space) && m_gameOver && !m_menuButtons.m_menuActive)
+		if (Input.GetKeyDown (KeyCode.Space) && m_gameOver && !m_menuButtons.m_menuActive) {
 			StartGame ();
+			m_p1Controller.ResetPlayerPosition();
+			m_p2Controller.ResetPlayerPosition();
+		}
 
 		if (Input.GetKeyDown (KeyCode.Escape) && !m_gameOver && !m_menuButtons.m_menuActive)
 		{
@@ -160,8 +155,6 @@ public class GameManager : MonoBehaviour {
 
 			m_audioManager.Play (0);
 			m_gameOver = false;
-
-			m_player2.transform.position = m_p2StartPos;
 		}
 	}
 

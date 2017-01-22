@@ -14,17 +14,17 @@ public class PlayerController : MonoBehaviour {
 	[SerializeField] bool m_grounded;
 	[SerializeField] int m_playerNumber;
 	[SerializeField] AudioManager m_audioManager;
-
+	public Vector3 m_startPos;
 
 	void Start () {
 		m_rb2d = GetComponent<Rigidbody2D> ();
 		m_gameManager = GameObject.Find ("GameManager").GetComponent<GameManager> ();
 		m_audioManager = GameObject.Find ("AudioManager").GetComponent<AudioManager> ();
 		m_jumped = false;
+		m_startPos = transform.position;
 	}
 
 	void Update () {
-
 		if (m_playerNumber == 1 && !m_gameManager.m_gameOver) {
 			m_movSpeed = Input.GetAxisRaw ("Player1_Horizontal") * m_acc;
 
@@ -88,6 +88,10 @@ public class PlayerController : MonoBehaviour {
 		}
 
 		m_rb2d.velocity = new Vector2 (m_movSpeed, m_rb2d.velocity.y);
+	}
+
+	public void ResetPlayerPosition() {
+		m_rb2d.velocity = new Vector2(m_rb2d.velocity.x, 20.0f);
 	}
 
 	void OnTriggerEnter2D (Collider2D col)
