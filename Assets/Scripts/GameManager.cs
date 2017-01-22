@@ -34,6 +34,8 @@ public class GameManager : MonoBehaviour {
 
 	[SerializeField] AudioManager m_audioManager;
 
+	[SerializeField] MenuButtons m_menuButtons;
+
 	public bool m_player1Hit;
 	public bool m_player2Hit;
 	public bool m_gameOver;
@@ -59,7 +61,7 @@ public class GameManager : MonoBehaviour {
 		// Some basic stuff
 		m_player1Hp = 3;
 		m_player2Hp = 3;
-		m_gameOver = false;
+		m_gameOver = true;
 		m_moshPitMode = false;
 
 		// GameObjects
@@ -83,6 +85,8 @@ public class GameManager : MonoBehaviour {
 		m_player1Win = GameObject.Find ("Player1Wins").GetComponent<Image> ();
 		m_player2Win = GameObject.Find ("Player2Wins").GetComponent<Image> ();
 
+		m_menuButtons = GameObject.Find ("MenuManager").GetComponent<MenuButtons> ();
+
 		m_p1StartPos = m_player1.transform.position;
 		m_p2StartPos = m_player2.transform.position;
 
@@ -96,12 +100,14 @@ public class GameManager : MonoBehaviour {
 	}
 	
 	void Update () {
-		if (m_player1Hp <= 0) {
+		if (m_player1Hp <= 0 && !m_gameOver) {
 			GameOver(2);
 		}
-		if (m_player2Hp <= 0) {
+		if (m_player2Hp <= 0 && !m_gameOver) {
 			GameOver (1);
 		}
+		if (Input.GetKey (KeyCode.Space) && m_gameOver && !m_menuButtons.m_menuActive)
+			StartGame ();
 	}
 
 	public void GameOver(int player) {
@@ -111,31 +117,32 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void StartGame() {
-		m_endPanel.SetActive (false);
-		m_player1Hp = 3;
-		m_player2Hp = 3;
+		if (m_gameOver) {
+			m_endPanel.SetActive (false);
+			m_player1Hp = 3;
+			m_player2Hp = 3;
 
-		// Enable game play stuff
-		m_gamePanel.SetActive (true);
-		for (int i = 0; i < m_P1HP.Length; i++) {
-			m_P1HP [i].enabled = true;
-			m_P2HP [i].enabled = true;
-		}
-		m_bigAssBall1.SetActive (true);
-		m_bigAssBall2.SetActive (true);
+			// Enable game play stuff
+			m_gamePanel.SetActive (true);
+			for (int i = 0; i < m_P1HP.Length; i++) {
+				m_P1HP [i].enabled = true;
+				m_P2HP [i].enabled = true;
+			}
+			m_bigAssBall1.SetActive (true);
+			m_bigAssBall2.SetActive (true);
 
-		if (!m_player1.activeInHierarchy)
-			m_player1.SetActive (true);
-		if(!m_player2.activeInHierarchy)
-			m_player2.SetActive (true);
+			if (!m_player1.activeInHierarchy)
+				m_player1.SetActive (true);
+			if (!m_player2.activeInHierarchy)
+				m_player2.SetActive (true);
 
-		if (m_gameOver)
+
+			m_player1.transform.position = m_p1StartPos;
+			m_player2.transform.position = m_p2StartPos;
+
+			m_audioManager.Play (0);
 			m_gameOver = false;
-
-		m_player1.transform.position = m_p1StartPos;
-		m_player2.transform.position = m_p2StartPos;
-
-		m_audioManager.Play (0);
+		}
 	}
 
 	public void PlayerHit(int player) {
@@ -225,13 +232,8 @@ public class GameManager : MonoBehaviour {
 			m_player1Win.enabled = false;
 			m_player2Win.enabled = true;
 		}
-
-		if (Input.GetKey (KeyCode.Space))
-			StartGame ();
 		
 		yield return new WaitForSeconds (120.0f);
-		if (m_gameOver)
-			StartGame ();
 	}
 
 }

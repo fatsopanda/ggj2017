@@ -10,16 +10,18 @@ public class MenuButtons : MonoBehaviour {
 	[SerializeField] GameManager m_gameManager;
 	[SerializeField] bool m_howto;
 	[SerializeField] bool m_quit;
+	public bool m_menuActive;
 
 	void Awake() {
 		m_menuPanel = GameObject.Find("StartMenuPanel");
 		m_controlsPanel = GameObject.Find("ControlsPanel");
 		m_gameManager = GameObject.Find ("GameManager").GetComponent<GameManager> ();
-		m_controlsPanel.SetActive(false);	
+		m_controlsPanel.SetActive(false);
 	}
 
 	void Start() {
 		m_quit = true;
+		m_menuActive = true;
 	}
 
 	public void HowButton() {
@@ -47,6 +49,7 @@ public class MenuButtons : MonoBehaviour {
 	public void PlayButton() {
 		m_controlsPanel.SetActive (false);
 		m_menuPanel.SetActive (false);
+		m_menuActive = false;
 		m_gameManager.StartGame ();
 	}
 
