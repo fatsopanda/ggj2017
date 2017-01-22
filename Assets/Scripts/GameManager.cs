@@ -62,6 +62,7 @@ public class GameManager : MonoBehaviour {
 		m_P2HP [0] = GameObject.Find ("P2HP1").GetComponent<Image>();
 		m_P2HP [1] = GameObject.Find ("P2HP2").GetComponent<Image>();
 		m_P2HP [2] = GameObject.Find ("P2HP3").GetComponent<Image>();
+		m_gamePanel.SetActive (false);
 	}
 	
 	void Update () {
@@ -69,6 +70,16 @@ public class GameManager : MonoBehaviour {
 			StartCoroutine (EndGame (2));
 		if (m_player2Hp <= 0)
 			StartCoroutine (EndGame (1));
+	}
+
+	public void StartGame() {
+		m_player1Hp = 3;
+		m_player2Hp = 3;
+		m_gamePanel.SetActive (true);
+		for (int i = 0; i < m_P1HP.Length; i++) {
+			m_P1HP [i].enabled = true;
+			m_P2HP [i].enabled = true;
+		}
 	}
 
 	public void PlayerHit(int player) {
