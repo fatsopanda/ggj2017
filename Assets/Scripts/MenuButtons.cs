@@ -12,14 +12,11 @@ public class MenuButtons : MonoBehaviour {
 	[SerializeField] bool m_quit;
 	public bool m_menuActive;
 
-	void Awake() {
+	void Start() {
 		m_menuPanel = GameObject.Find("StartMenuPanel");
 		m_controlsPanel = GameObject.Find("ControlsPanel");
 		m_gameManager = GameObject.Find ("GameManager").GetComponent<GameManager> ();
 		m_controlsPanel.SetActive(false);
-	}
-
-	void Start() {
 		m_quit = true;
 		m_menuActive = true;
 	}

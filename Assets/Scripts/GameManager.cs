@@ -29,6 +29,8 @@ public class GameManager : MonoBehaviour {
 	[SerializeField] GameObject m_endPanel;
 	[SerializeField] Image m_player1Win;
 	[SerializeField] Image m_player2Win;
+	[SerializeField] Text m_player1WinText;
+	[SerializeField] Text m_player2WinText;
 
 	[SerializeField] AudioManager m_audioManager;
 
@@ -41,6 +43,8 @@ public class GameManager : MonoBehaviour {
 	public bool m_moshPitMode;
 	public int m_player1Hp;
 	public int m_player2Hp;
+	public int m_player1Wins;
+	public int m_player2Wins;
 
 	void Start () {
 		// Players and camera objects
@@ -63,6 +67,9 @@ public class GameManager : MonoBehaviour {
 		m_gameOver = true;
 		m_moshPitMode = false;
 		m_paused = false;
+
+		m_player1Wins = 0;
+		m_player2Wins = 0;
 
 		// GameObjects
 		m_bigAssBall1 = GameObject.Find("BigAssBall1");
@@ -87,6 +94,9 @@ public class GameManager : MonoBehaviour {
 		m_player2Win = GameObject.Find ("Player2Wins").GetComponent<Image> ();
 
 		m_menuButtons = GameObject.Find ("MenuManager").GetComponent<MenuButtons> ();
+
+		m_player1WinText = GameObject.Find ("P1Wins").GetComponent<Text> ();
+		m_player2WinText = GameObject.Find ("P2Wins").GetComponent<Text> ();
 
 		// The beginning situation
 		m_pauseImage.enabled = false;
@@ -237,14 +247,21 @@ public class GameManager : MonoBehaviour {
 		m_bigAssBall2.SetActive (false);
 
 		m_endPanel.SetActive (true);
+
+
 		if (player == 1) {
 			m_player2Win.enabled = false;
 			m_player1Win.enabled = true;
+			m_player1Wins++;
 		}
 		if (player == 2) {
 			m_player1Win.enabled = false;
 			m_player2Win.enabled = true;
+			m_player2Wins++;
 		}
+
+		m_player1WinText.text = "" + m_player1Wins;
+		m_player2WinText.text = "" + m_player2Wins;
 		
 		yield return new WaitForSeconds (120.0f);
 	}
