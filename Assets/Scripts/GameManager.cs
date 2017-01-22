@@ -29,6 +29,8 @@ public class GameManager : MonoBehaviour {
 	[SerializeField] Vector3 m_p1StartPos;
 	[SerializeField] Vector3 m_p2StartPos;
 
+	[SerializeField] AudioManager m_audioManager;
+
 	public bool m_player1Hit;
 	public bool m_player2Hit;
 	public bool m_gameOver;
@@ -43,6 +45,7 @@ public class GameManager : MonoBehaviour {
 		//m_p1Controller = m_player1.GetComponent<PlayerController> ();
 		//m_p2Controller = m_player2.GetComponent<PlayerController> ();
 		m_cameraController = Camera.main.GetComponent<CameraController> ();
+		m_audioManager = GameObject.Find ("AudioManager").GetComponent<AudioManager> ();
 
 		// Flashing head sprite
 		m_p1spriteRenderer = GameObject.Find("player 1 head").GetComponent<SpriteRenderer> ();
@@ -85,10 +88,14 @@ public class GameManager : MonoBehaviour {
 	}
 	
 	void Update () {
-		if (m_player1Hp <= 0)
+		if (m_player1Hp <= 0) {
+			m_audioManager.Play (1);
 			StartCoroutine (EndGame (2));
-		if (m_player2Hp <= 0)
+		}
+		if (m_player2Hp <= 0) {
+			m_audioManager.Play (1);
 			StartCoroutine (EndGame (1));
+		}
 	}
 
 	public void StartGame() {
@@ -114,6 +121,8 @@ public class GameManager : MonoBehaviour {
 
 		m_player1.transform.position = m_p1StartPos;
 		m_player2.transform.position = m_p2StartPos;
+
+		m_audioManager.Play (0);
 	}
 
 	public void PlayerHit(int player) {
@@ -181,6 +190,7 @@ public class GameManager : MonoBehaviour {
 
 	IEnumerator PlayerHitEvent(int player) {
 		m_cameraController.ScreenShake (2);
+		m_audioManager.Play (Random.Range (2, 7));
 		StartCoroutine (FlashSprite(player));
 		yield return new WaitForSeconds (2.0f);
 		if (player == 1)
@@ -201,9 +211,11 @@ public class GameManager : MonoBehaviour {
 			Debug.Log ("Player 2 won!");
 		}
 
-		yield return new WaitForSeconds (1.0f);
-
-		if (Input.GetKey (KeyCode.R))
+		if (Input.GetKey (KeyCode.Space))
+			StartGame ();
+		
+		yield return new WaitForSeconds (120.0f);
+		if (m_gameOver)
 			StartGame ();
 	}
 

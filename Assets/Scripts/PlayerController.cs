@@ -13,11 +13,13 @@ public class PlayerController : MonoBehaviour {
 	[SerializeField] bool m_jumped;
 	[SerializeField] bool m_grounded;
 	[SerializeField] int m_playerNumber;
+	[SerializeField] AudioManager m_audioManager;
 
 
 	void Start () {
 		m_rb2d = GetComponent<Rigidbody2D> ();
 		m_gameManager = GameObject.Find ("GameManager").GetComponent<GameManager> ();
+		m_audioManager = GameObject.Find ("AudioManager").GetComponent<AudioManager> ();
 		m_jumped = false;
 	}
 
@@ -48,7 +50,9 @@ public class PlayerController : MonoBehaviour {
 
 			if (Input.GetKeyDown (KeyCode.UpArrow) && !m_jumped) {
 				m_rb2d.velocity = new Vector2 (m_rb2d.velocity.x, m_jumpSpeed);
+				m_audioManager.Play (Random.Range (8, 21));
 				m_jumped = true;
+				m_grounded = false;
 			}
 		}
 
@@ -77,6 +81,7 @@ public class PlayerController : MonoBehaviour {
 
 			if (Input.GetKey (KeyCode.W) && !m_jumped) {
 				m_rb2d.velocity = new Vector2 (m_rb2d.velocity.x, m_jumpSpeed);
+				m_audioManager.Play (Random.Range (8, 21));
 				m_jumped = true;
 				m_grounded = false;
 			}
