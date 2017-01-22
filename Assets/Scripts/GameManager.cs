@@ -18,6 +18,9 @@ public class GameManager : MonoBehaviour {
 	[SerializeField] Sprite m_p2currentSprite;
 	[SerializeField] Sprite m_p2hitSprite;
 
+	[SerializeField] GameObject m_bigAssBall1;
+	[SerializeField] GameObject m_bigAssBall2;
+
 	// UI stuff
 	[SerializeField] GameObject m_gamePanel;
 	[SerializeField] Image[] m_P1HP;
@@ -50,6 +53,10 @@ public class GameManager : MonoBehaviour {
 		m_gameOver = false;
 		m_moshPitMode = false;
 
+		// GameObjects
+		m_bigAssBall1 = GameObject.Find("BigAssBall1");
+		m_bigAssBall2 = GameObject.Find ("BigAssBall2");
+
 		// UI
 		m_gamePanel = GameObject.Find ("GamePanel");
 		m_P1HP = new Image[m_player1Hp];
@@ -62,7 +69,13 @@ public class GameManager : MonoBehaviour {
 		m_P2HP [0] = GameObject.Find ("P2HP1").GetComponent<Image>();
 		m_P2HP [1] = GameObject.Find ("P2HP2").GetComponent<Image>();
 		m_P2HP [2] = GameObject.Find ("P2HP3").GetComponent<Image>();
+
+		// The beginning situation
 		m_gamePanel.SetActive (false);
+		m_bigAssBall1.SetActive (false);
+		m_bigAssBall2.SetActive (false);
+		m_player1.SetActive (false);
+		m_player2.SetActive (false);
 	}
 	
 	void Update () {
@@ -80,6 +93,10 @@ public class GameManager : MonoBehaviour {
 			m_P1HP [i].enabled = true;
 			m_P2HP [i].enabled = true;
 		}
+		m_bigAssBall1.SetActive (true);
+		m_bigAssBall2.SetActive (true);
+		m_player1.SetActive (true);
+		m_player2.SetActive (true);
 	}
 
 	public void PlayerHit(int player) {
